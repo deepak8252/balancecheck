@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>account balance</title>
+<style>
+    .container{
+        width: 100%;
+        min-height: 100vh;
+        background:linear-gradient(112deg,#345fed,#5ed2c4);
+        padding: 20px 0px;
+    }
+    .row{
+        width: 300px;
+        height: auto;
+        padding: 20px;
+        background-color: #fff;
+        margin: auto;
+        border-radius: 20px;
+        box-shadow: 0px 0px 5px rgba(0,0,0,.2);
+        font-family: sans-serif;
+        text-align: center;
+    }
+    h2{
+        text-align: center;
+        color: teal;
+        font-weight: 700;
+        text-transform: capitalize;
+    }
+     p{
+   font-family: sans-serif;
+   text-transform: capitalize;
+   font-size: 20px;
+   color: green;
+   font-weight: 700;
+   display: none;
+    }
+    button{
+        background-color: teal;
+        color: white;
+        padding: 5px 14px;
+        text-transform: capitalize;
+        font-size: 16px;
+        cursor: pointer;
+        outline: none;
+        margin-right: 10px;
+        border: none;
+        box-shadow: 0px 0px 4px rgba(0,0,0,.8);
+        transition: all .4s ease-in-out;
+        margin-top: 10px;
+    }
+    button:hover{
+        box-shadow: none;
+    }
+    input{
+        width: 80%;
+        padding: 8px ;
+        border-radius: 20px;
+        display: none;
+        margin: auto;
+    }
+    .d-none{
+ display: none;
+    }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+    <h2>check account balance</h2>
+    <p>total balance : RS 98765</p>
+    <input type="text" placeholder="enter any 4 digit rendom password" id="inputbox"><br>
+    <input type="text" placeholder="enter whidra amount" id="whidrabalance"><br>
+    <button id="login">login user</button> <br>
+    <button id="check_balance"class="d-none">check balance</button>
+    <button id="whidra" class="d-none">balance whidra</button>
+    <button class="d-none"id="getwhidra">get whidra</button>
+    <button class="d-none" id="exit">exit</button>
+    </div>
+  </div>
+
+<script>
+    let para=document.querySelector("p");
+const checkbtn=document.querySelector("#check_balance");
+const whidra=document.querySelector("#whidra");
+const login=document.getElementById("login");
+const inputbox=document.getElementById("inputbox");
+const whidrabalance=document.getElementById("whidrabalance");
+const getwhidra=document.getElementById("getwhidra");
+const exit=document.getElementById("exit");
+let totalbal=987654;
+ login.addEventListener("click",()=>{
+    inputbox.style.display="block"
+  checkbtn.classList.remove("d-none");
+  whidra.classList.remove("d-none");
+  login.classList.add("d-none");
+    
+ });
+ checkbtn.addEventListener("click",()=>{
+ if(inputbox.value=="" ){
+    alert("please enter random passsword");
+ }
+else{
+    para.innerHTML=`your total balnce is rs ${totalbal}`;
+    para.style.display="block";
+    inputbox.value="";
+    inputbox.style.display="none";
+    checkbtn.classList.add("d-none");
+    exit.classList.remove("d-none")
+}
+ })
+
+ whidra.addEventListener("click",()=>{ 
+    if(inputbox.value=="" ){
+    alert("please enter random passsword");
+ }
+    else{
+
+        whidrabalance.style.display="block";
+    getwhidra.style.display="block"
+   checkbtn.classList.add("d-none");
+   whidra.classList.add("d-none");
+ inputbox.style.display="none"
+    }
+   
+ });
+ getwhidra.addEventListener("click",()=>{
+    if(whidrabalance.value==""){
+        alert("please enter valid amount");
+    }
+   else{
+    let avibal=  totalbal-parseInt(whidrabalance.value) ;
+   para.style.display="block"
+   alert("your whidra is suceesfully");
+   para.innerHTML=`your avialbe balance is ${avibal} `;
+   whidrabalance.value=""
+    exit.classList.remove("d-none");
+    getwhidra.style.display="none";
+    whidrabalance.style.display="none";
+   }
+ })
+ exit.addEventListener("click",()=>{
+    login.classList.remove("d-none");
+    para.style.display="none";
+    getwhidra.style.display="none";
+    whidrabalance.style.display="none";
+    exit.classList.add("d-none");
+    whidra.classList.add("d-none")
+ })
+</script>
+</body>
+</html>
